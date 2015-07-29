@@ -1,0 +1,49 @@
+/*****Nav logo*****/
+$square-size: 40px;
+
+.nav-logo{
+  display: inline-block;
+}
+
+// $logo-square-colors: #EBBB00, #D6510D, #3791C2;
+// @for $i from 1 through 3 {
+//   .nav-logo div:nth-child(#{$i}){
+//       background-color: nth($logo-square-colors, $i);
+//   }
+// }
+
+/*****Navtabs*****/
+
+.nav>ul>li, .nav>ul{
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.nav{
+  text-align: center;
+}
+ 
+.tab {
+  @extend .relative;
+}
+.tab:hover .subitems{
+    display: inline-block;
+}
+.tab .subitems{
+    display: none;  
+    position: absolute;
+    float: left;
+    list-style: none;
+    padding: 10px;
+    top: 30px;
+    left: 0;
+    max-width: 200px;
+    min-width: 150px;
+    background-color: #F3F0F0;
+}
+.relative {
+  position: relative;
+}
+
+
+/****Nav contact****/
