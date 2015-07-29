@@ -1,0 +1,29 @@
+
+@media only screen 
+  and (max-device-width: 414px) 
+  and (max-device-height: 736px)
+  and (orientation: portrait) { 
+  	.footer-container {
+  		font-size: 4vw;
+	  	.footer-share {
+		    clear: both;
+		    float: none;
+		    padding: 10px 0;
+		    text-align: center;
+		}
+
+		.footer-logo{
+			background-size: cover;
+		    min-height: 10vw;
+		    min-width: 35vw;
+		}
+	}
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-height: 414px) 
+  and (max-device-width: 736px) 
+  and (orientation: landscape) { 
+
+}

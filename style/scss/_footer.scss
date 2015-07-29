@@ -1,36 +1,42 @@
 .footer-container {
     color: #928F8E;
+
     .footer-logo {
         background-image: url("../../images/320_ITW_footer_logo.png");
         background-repeat: no-repeat;
         min-height: 21px;
         min-width: 71px;
     }
+
     .social_icon {
         background-repeat: no-repeat;
-        min-height: 25px;
-        min-width: 25px;
+        background-position: center;
         display: inline-block;
+        min-height: 25px;
+        min-width: 35px;
     }
-    $social_networks: "facebook",
-    "twitter",
-    "linkedin";
+
+    $social_networks: "facebook", "twitter", "linkedin";
+
     @for $i from 1 through 3 {
         $current_network: nth($social_networks, $i);
+
         .social_#{$current_network} {
             @extend .social_icon;
-            background-image: url("../../images/social_#{$current_network}.png");
+
+            content: url("../../images/social_#{$current_network}.png");
         }
     }
 
     .footer-share {
-      float: right;
-    }
-    .footer-copyright-container{
-      float: left;
+        float: right;
     }
 
-    hr{
-      clear: both;
+    .footer-copyright-container {
+        float: left;
+    }
+
+    hr {
+        clear: both;
     }
 }
