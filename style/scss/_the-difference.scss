@@ -7,6 +7,7 @@
 	$usp_icons: "sharper", "quicker", "stateside", "smarter", "greater";
 	@for $i from 1 through 5 {
 	   .the-difference li:nth-child(#{$i}) .icon{
+	   		margin: 0 auto;
 	   		$current_icon: nth($usp_icons, $i);
 	   		@if $resolution == "2x"{
 				content: url('../../images/usp_icon_#{$current_icon}@2x.png'); 

@@ -1,0 +1,318 @@
+$animation-duration: 3s;
+$animation-delay: 1500ms;
+$height-B: 200px;
+$first-row-top: $height-B - 137px;
+$second-row-4-top: 5%;
+$second-row-5-6-top: 288px;
+$group-3-left: calc(80% - 140px);
+$left-B: calc(80% - 140px + 100px);
+$left-C: calc(80% - 900px + 158px);
+.work-container {
+    min-width: 1100px;
+    margin: 0 auto;
+    width: 1300px;
+}
+
+first-row,
+.second-row {
+    height: 50%;
+}
+
+.lines-container {
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+}
+
+.A {
+    box-shadow: -1.35px 0px #2F2B2A;
+    width: 100px;
+    left: 80%;
+    height: 0;
+}
+
+.B {
+    box-shadow: 0px -1.75px 0px #2F2B2A;
+    height: $height-B;
+    left: $left-B;
+    top: $second-row-5-6-top;
+}
+
+.C {
+    box-shadow: -1.35px 0px #2F2B2A;
+    width: 100px;
+    top: 343px;
+    left: $left-C;
+    transform-origin: left bottom;
+}
+
+.D {
+    border-bottom: 2px solid #2F2B2A;
+    height: 200px;
+    width: 0;
+}
+
+.A,
+.B,
+.C,
+.D {
+    @extend .inline-block;
+    position: absolute;
+}
+
+.animate-A {
+    @extend .top-to-bottom;
+}
+
+.animate-B {
+    @extend .right-to-left;
+    -webkit-animation-delay: $animation-delay * 8;
+}
+
+.animate-C {
+    @extend .bottom-to-top;
+    -webkit-animation-delay: $animation-delay * 5;
+}
+
+.animate-D {
+    @extend .left-to-right;
+    -webkit-animation-delay: $animation-delay;
+}
+
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.inline-block-container {
+    @extend .inline-block;
+    width: 100%;
+}
+
+.animation {
+    -webkit-animation-duration: $animation-duration;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.left-to-right {
+    @extend .animation;
+    -webkit-animation-name: D-animation;
+}
+
+.right-to-left {
+    @extend .animation;
+    -webkit-animation-name: B-animation;
+}
+
+.top-to-bottom {
+    @extend .inline-block;
+    @extend .animation;
+    -webkit-animation-name: A-animation;
+}
+
+.bottom-to-top {
+    @extend .animation;
+    -webkit-animation-name: C-animation;
+}
+
+@function custom_translate_val($direction, $value) {
+    $temp: 'translate#{$direction}(#{$value})';
+    @return unquote($temp);
+}
+
+@mixin custom_translate($direction, $from, $to, $size) {
+    @if $direction=='X' {
+        from {
+            width: 0;
+            opacity: 0;
+            transform: custom_translate_val('X', $from);
+        }
+        to {
+            width: $size;
+            transform: custom_translate_val('X', $to);
+        }
+    }
+    @else {
+        from {
+            height: 0;
+            opacity: 0;
+            transform: custom_translate_val('Y', $from);
+        }
+        to {
+            height: $size;
+            transform: custom_translate_val('Y', $to);
+        }
+    }
+}
+
+@-webkit-keyframes D-animation {
+    @include custom_translate('X', -80%, 0, 80%);
+}
+
+@-webkit-keyframes B-animation {
+    @include custom_translate('X', $left-B, 0, 20%);
+}
+
+@-webkit-keyframes C-animation {
+    @include custom_translate('Y', -3px, -3px, 500px);
+}
+
+@-webkit-keyframes A-animation {
+    @include custom_translate('Y', -200, 0%, 200);
+}
+
+.boxes-container {
+    left: 0;
+    top: 0;
+    background: #DAD7D6;
+}
+
+.box-container {
+    .first-row,
+    .second-row {
+        div {
+            width: 300px;
+            position: absolute;
+        }
+    }
+}
+
+.lines-container {
+    .first-row,
+    .second-row {
+        height: 50%;
+        div {
+            width: 300px;
+            position: absolute;
+        }
+    }
+}
+
+@mixin custom_translate_box($direction, $from, $to) {
+    @if $direction=='X' {
+        from {
+            opacity: 0;
+            transform: custom_translate_val('X', $from);
+        }
+        to {
+            visibility: visible;
+            transform: custom_translate_val('X', $to);
+        }
+    }
+    @else {
+        from {
+            opacity: 0;
+            transform: custom_translate_val('Y', $from);
+        }
+        to {
+            visibility: visible;
+            transform: custom_translate_val('Y', $to);
+        }
+    }
+}
+
+@-webkit-keyframes group-1 {
+    @include custom_translate_box('X', calc(80% - 600px + 50px), 0);
+}
+
+@-webkit-keyframes group-2 {
+    @include custom_translate_box('X', calc(80% - 900px + 50px), 0);
+}
+
+@-webkit-keyframes group-3 {
+    @include custom_translate_box('Y', -200px, 0);
+}
+
+@-webkit-keyframes group-4 {
+    @include custom_translate_box('Y', -308px, 0);
+}
+
+@-webkit-keyframes group-5 {
+    @include custom_translate_box('Y', 205px, 289px);
+}
+
+@-webkit-keyframes group-6 {
+    @include custom_translate_box('Y', 0, $second-row-5-6-top);
+}
+
+.group-n {
+    @extend .animation;
+    visibility: hidden;
+}
+
+@mixin group-n($i, $delay) {
+    @extend .group-n;
+    @if $i <=3 {
+        top: $first-row-top;
+    }
+    @else {
+        @if $i==4 {
+            top: 268px;
+        }
+        @else {
+            @if $i==5 {
+                top: -87px;
+            }
+            @else {
+                top: 0; //$second-row-5-6-top;
+            }
+        }
+    }
+    -webkit-animation-name: group-#{$i};
+    -webkit-animation-delay: $animation-delay * $delay;
+}
+
+.group-1,
+.group-2,
+.group-3,
+.group-4,
+.group-5,
+.group-6 {
+    z-index: 100;
+}
+
+.group-1 {
+    left: calc(80% - 900px + 50px);
+    content: url("../../images/therapy-records.png");
+    @include group-n(1,
+    3);
+}
+
+.group-2 {
+    left: calc(80% - 600px + 110px);
+    content: url("../../images/Umbra.png");
+    @include group-n(2,
+    3);
+}
+
+.group-3 {
+    left: $group-3-left;
+    content: url("../../images/EarnestShopper.png");
+    @include group-n(3,
+    2);
+}
+
+.group-4 {
+    left: calc(80% - 900px + 50px);
+    content: url("../../images/Xbox.png");
+    @include group-n(4,
+    4);
+}
+
+.group-5 {
+    left: calc(80% - 600px + 110px);
+    content: url("../../images/Google.png");
+    @include group-n(5,
+    6);
+}
+
+.group-6 {
+    left: calc(80% - 140px);
+    content: url("../../images/Heat.png");
+    @include group-n(6,
+    7);
+}

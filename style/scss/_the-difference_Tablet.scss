@@ -1,25 +1,17 @@
-@media only screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2) 
-  and (orientation: portrait) {
+@media (-webkit-min-device-pixel-ratio: 2) {
   	@include the-difference-images("2x");
+  }
+
+@media screen 
+  and (max-device-width: 1600px) 
+  and (orientation: portrait) {
 }
 
-/* Landscape */
-@media only screen 
-  and (min-device-width: 1200px) 
+@media screen 
   and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2) 
   and (orientation: landscape) {
 
 } 
-.the-difference-container{
-	background-color: #4791c2;
-	color: white;
-	text-align: center;
-	font-size: 2.5vw;
-}
 
 
 .the-difference{
