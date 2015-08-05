@@ -1,0 +1,51 @@
+$mobile-size: '(max-device-width: 414px) and (max-device-height: 736px)';
+$mobile-size: unquote($mobile-size);
+@media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
+    @include the-difference-images("2x");
+}
+
+@media only screen and #{$mobile-size} {
+    .the-difference-container{
+        padding: 40 0 0 0;
+    }
+    .the-difference {
+        display: block;
+        li {
+            display: inline-block;
+            padding: 30px 10px;
+            text-align: center;
+        }
+    }
+}
+
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
+
+@mixin common($unit) {
+    .the-difference li {
+        .label {
+            font-size: calc_unit($unit, 3.5);
+        }
+        .icon {
+            height: calc_unit($unit, 17);
+        }
+    }
+    .the-difference li:nth-child(2) {
+        .icon {
+            height: calc_unit($unit, 10);
+        }
+    }
+}
+
+@media only screen and (orientation: landscape) and #{$mobile-size} {
+    @include common('vh');
+}
+
+@media only screen and (orientation: portrait) and #{$mobile-size} {
+    @include common('vw');
+   .the-difference li  .label {
+            font-size: calc_unit('vw', 4.2) ;
+        }
+}

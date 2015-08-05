@@ -1,31 +1,43 @@
-.the-difference-container{
-	background-color: #4791c2;
-	color: white;
-	text-align: center;
+.the-difference-container {
+    background-color: #4791c2;
+    color: white;
+    text-align: center;
+    padding: 40 0;
+    .the-difference-title{
+        @include OpenSans('ExtraBold',24);
+    }
+    .ifthenwow{
+        @include OpenSansT('ExtraBold');
+        span{
+            @include OpenSansT('Regular');
+        }
+    }
 }
-@mixin the-difference-images($resolution){
-	$usp_icons: "sharper", "quicker", "stateside", "smarter", "greater";
-	@for $i from 1 through 5 {
-	   .the-difference li:nth-child(#{$i}) .icon{
-	   		margin: 0 auto;
-	   		$current_icon: nth($usp_icons, $i);
-	   		@if $resolution == "2x"{
-				content: url('../../images/usp_icon_#{$current_icon}@2x.png'); 
-	   		}
-	   		@else{
-	        	content: url('../../images/usp_icon_#{$current_icon}.png');
-	   		} 
-	   }
-	}
+
+@mixin the-difference-images($resolution) {
+    $usp_icons: "sharper", "quicker", "stateside", "smarter", "greater";
+    @for $i from 1 through 5 {
+        .the-difference li:nth-child(#{$i}) .icon {
+            margin: 0 auto;
+            margin-bottom: 10px;
+            $current_icon: nth($usp_icons, $i);
+            @if $resolution=="2x" {
+                content: url('../../images/usp_icon_#{$current_icon}@2x.png');
+            }
+            @else {
+                content: url('../../images/usp_icon_#{$current_icon}.png');
+            }
+        }
+    }
 }
 
 @include the-difference-images("");
-
-.the-difference{
-	li{
-		list-style: none;
-		display: inline-block;
-	    padding: 30px;
-	    text-align: center;
-	}
+.the-difference {
+    display: inline-block;
+    li {
+        list-style: none;
+        display: inline-block;
+        padding: 30px;
+        text-align: center;
+    }
 }

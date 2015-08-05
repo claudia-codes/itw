@@ -1,24 +1,64 @@
-@media (-webkit-min-device-pixel-ratio: 2) {
-  	@include the-difference-images("2x");
-  }
-
-@media screen 
-  and (max-device-width: 1600px) 
-  and (orientation: portrait) {
+$tablet-size: '(min-device-width: 415px) and (max-device-width: 1600px)';
+$tablet-size: unquote($tablet-size);
+//$tablet-size-interval1: '(max-device-width: 960px)';
+//$tablet-size-interval1: unquote($tablet-size-interval1);
+@media (-webkit-min-device-pixel-ratio: 2) and #{$tablet-size} {
+    @include the-difference-images("2x");
 }
 
-@media screen 
-  and (max-device-width: 1600px) 
-  and (orientation: landscape) {
-
-} 
-
-
-.the-difference{
-	li{
-		list-style: none;
-		display: inline-block;
-	    padding: 30px;
-	    text-align: center;
-	}
+@media only screen and #{$tablet-size} {
+    .the-difference {
+        display: block;
+        li {
+            padding: 30px 0;
+        }
+    }
 }
+
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
+
+@mixin common($unit) {
+    .the-difference li {
+        .label {
+            font-size: calc_unit($unit, 3.5);
+        }
+        .icon {
+            height: calc_unit($unit, 10);
+        }
+        &:nth-child(2) .icon{
+        	height:calc_unit($unit, 10);
+        }
+    }
+}
+
+@media only screen and (orientation: landscape) and #{$tablet-size} {
+    @include common('vh');
+}
+
+@media only screen and (orientation: portrait) and #{$tablet-size} {
+   .the-difference li {
+        .label {
+            font-size: calc_unit('vw', 2.5);
+        }
+        .icon {
+            height: calc_unit('vw', 8);
+        }
+        &:nth-child(2) .icon{
+        	height:calc_unit('vw', 7);
+        }
+    }
+}
+
+// @media only screen and (orientation: landscape) and #{$tablet-size-interval1} {
+//     .icon {
+//         height: calc_unit('vh', 10);
+//     }
+// }
+// @media only screen and (orientation: portrait) and #{$tablet-size-interval1} {
+//     .icon {
+//         height: calc_unit('vw', 10);
+//     }
+// }

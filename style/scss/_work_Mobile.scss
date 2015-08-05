@@ -1,0 +1,30 @@
+$mobile-size: '(max-device-width: 414px) and (max-device-height: 736px)';
+$mobile-size: unquote($mobile-size);
+@media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
+    //@include the-difference-images("2x");
+}
+
+@media only screen and #{$mobile-size} {
+}
+
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
+
+@mixin common($unit) {
+}
+
+@media only screen and (orientation: landscape) and #{$mobile-size} {
+    @include common('vh');
+}
+
+@media only screen and (orientation: portrait) and #{$mobile-size} {
+    @include common('vw');
+    @for $i from 1 through 6 {
+        .group-#{$i}{
+            width: calc(100vw - 30px);
+        }
+    }
+}
+

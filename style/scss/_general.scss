@@ -16,27 +16,29 @@
   src: url('../fonts/HelveticaNeue.ttf')
 }
 
-@font-face{
-  font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeue.ttf')
+$OpenSans-types: 'Bold','BoldItalic','ExtraBold','ExtraBoldItalic','Italic','Light','LightItalic','Regular','SemiboldItalic','Semibold';
+@mixin generateOpenSansFonts(){
+  @for $i from 1 through length($OpenSans-types) {
+    $type: nth($OpenSans-types, $i);
+    @include OpenSans($type); 
+  }
+}
+ 
+@mixin OpenSans($type,$size){
+  font-family: 'OpenSans-#{$type}', sans-serif;
+  font-size: $size;
+}
+@mixin OpenSans_L($type,$size, $line-height){
+  font-family: 'OpenSans-#{$type}', sans-serif;
+  font-size: $size;
+  line-height: $line-height;
 }
 
-@font-face{
-  font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeue.ttf')
+@mixin OpenSansT($type){
+  font-family: 'OpenSans-#{$type}', sans-serif;
 }
-
-@font-face{
-  font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeue.ttf')
-}
-
-@font-face{
-  font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeue.ttf')
-}
-
 body{
-  font-family: 'HelveticaNeue', sans-serif;
+  font-family: 'OpenSans-Light', sans-serif;
   background-color: #F3F0F0;
+  margin: 0;
 }

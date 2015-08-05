@@ -1,29 +1,55 @@
-
-@media only screen 
-  and (max-device-width: 414px) 
-  and (max-device-height: 736px)
-  and (orientation: portrait) { 
-  	.footer-container {
-  		font-size: 4vw;
-	  	.footer-share {
-		    clear: both;
-		    float: none;
-		    padding: 10px 0;
-		    text-align: center;
-		}
-
-		.footer-logo{
-			background-size: cover;
-		    min-height: 10vw;
-		    min-width: 35vw;
-		}
-	}
+$mobile-size: '(max-device-width: 414px) and (max-device-height: 736px)';
+$mobile-size: unquote($mobile-size);
+@media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
+    //@include the-difference-images("2x");
 }
 
-/* Landscape */
-@media only screen 
-  and (min-device-height: 414px) 
-  and (max-device-width: 736px) 
-  and (orientation: landscape) { 
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
 
+@mixin common($unit) {
+    .footer-container {
+        font-size: 4vw;
+        $temp: calc_unit($unit, 100);
+        width: calc(#{$temp} - 30px) !important;
+        margin: 0 15px;
+        .footer-share {
+            clear: both;
+            float: none;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            background-size: cover;
+            //min-height: 5vw;
+        }
+        .social_icon {
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            min-height: calc_unit($unit, 8);
+            margin-left: 15px;
+        }
+        & .social_twitter {
+            min-height: 21px;
+        }
+        .section-column {
+            $temp: calc_unit($unit, 100);
+            width: calc(#{$temp} - 30px) !important;
+            margin: 0;
+        }
+        .section-title {
+            margin-top: 20px;
+        }
+    }
+}
+
+@media only screen and (orientation: landscape) and #{$mobile-size} {
+    @include common('vh');
+}
+
+@media only screen and (orientation: portrait) and #{$mobile-size} {
+    @include common('vw');
 }

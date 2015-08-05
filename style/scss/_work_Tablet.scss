@@ -1,0 +1,39 @@
+$tablet-size: '(min-device-width: 415px) and (max-device-width: 1600px)';
+$tablet-size: unquote($tablet-size);
+
+@media (-webkit-min-device-pixel-ratio: 2) and #{$tablet-size} {
+    //@include the-difference-images("2x");
+}
+
+@media only screen and #{$tablet-size} {
+}
+
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
+
+@mixin common($unit) {
+}
+
+@media only screen and (orientation: landscape) and #{$tablet-size} {
+    @include common('vh');
+}
+
+$padding: 160px;
+@media only screen and (orientation: portrait) and #{$tablet-size} {
+    @include common('vw');
+
+    .group-3-6{
+        display: block;
+    }
+    .group-3, .group-6{
+        display: inline-block;
+    }
+    @for $i from 1 through 6 {
+        .group-#{$i}{
+            width: calc(50vw - 30px - #{$padding});
+        }
+    }
+}
+

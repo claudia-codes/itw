@@ -1,0 +1,77 @@
+$mobile-size: '(max-device-width: 414px) and (max-device-height: 736px)';
+$mobile-size: unquote($mobile-size);
+@media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
+    //@include the-difference-images("2x");
+}
+
+@media only screen and #{$mobile-size} {
+    .yes-container {
+        fieldset {
+            .mobile-hide {
+                display: none !important;
+            }
+            .mobile-show {
+                display: block !important;
+                margin-bottom: 10px;
+            }
+            fieldset {
+                max-width: 414px;
+            }
+            .yes {
+                height: auto !important;
+                position: relative;
+                font-size: 17vw !important;
+            }
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
+
+@mixin common($unit) {
+    .submitBtnLabel {
+        font-size: calc_unit($unit, 7.5);
+        span{
+            @include OpenSansT('ExtraBold');
+        }
+    }
+}
+
+@media only screen and (orientation: landscape) and #{$mobile-size} {
+    @include common('vh');
+}
+
+@media only screen and (orientation: portrait) and #{$mobile-size} {
+    @include common('vw');
+    .yes-container {
+        .no-spam {
+            font-size: 5.5vw !important;
+            margin: 0;
+        }
+        .mobile-view {
+            input[type="email"] {
+                font-size: 5.5vw;
+                margin-bottom: 17px;
+            }
+            input[type="submit"] {
+                font-size: 6vw;
+            }
+            fieldset input {
+                width: calc(100vw - 60px);
+                height: 17vw;
+                margin-left: 0;
+                font-size: 6.5vw;
+            }
+        }
+    }
+}
+
+

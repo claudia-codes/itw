@@ -1,0 +1,45 @@
+$tablet-size: '(min-device-width: 415px) and (max-device-width: 1600px)';
+$tablet-size: unquote($tablet-size);
+@media (-webkit-min-device-pixel-ratio: 2) and #{$tablet-size} {
+    //@include the-difference-images("2x");
+}
+
+@media only screen and #{$tablet-size} {}
+
+@function calc_unit($unit, $amount) {
+    $temp: $amount + $unit;
+    @return unquote($temp);
+}
+
+@mixin common($unit) {}
+
+@mixin common($unit) {
+    .nav {
+        width: calc(100vw - 20px) !important;
+        padding: 10px;
+        margin: 0 !important;
+        left: 0!important;
+        .contact-box {
+            right: 10px;
+            top: 30px;
+        }
+        .contact-box,
+        .nav-logo {
+            position: absolute;
+        }
+        .nav-logo {
+            left: 10px;
+            img {
+                width: calc_unit($unit, 20);
+            }
+        }
+        .nav-menu {
+            $temp: calc_unit($unit, 9.4);
+            margin-top: 42px !important;
+        }
+    }
+}
+
+@media only screen and (orientation: portrait) and #{$tablet-size} {
+    @include common('vw');
+}

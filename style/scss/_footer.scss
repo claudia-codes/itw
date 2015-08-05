@@ -1,42 +1,72 @@
+@import "footer_Mobile";
+@import "footer_Tablet";
 .footer-container {
     color: #928F8E;
-
+    font-size: 14px;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
     .footer-logo {
         background-image: url("../../images/320_ITW_footer_logo.png");
         background-repeat: no-repeat;
         min-height: 21px;
         min-width: 71px;
+        margin-right: 5px;
     }
-
     .social_icon {
         background-repeat: no-repeat;
         background-position: center;
         display: inline-block;
         min-height: 25px;
-        min-width: 35px;
+        margin-left: 15px;
     }
-
-    $social_networks: "facebook", "twitter", "linkedin";
-
+    & .social_twitter {
+        min-height: 21px;
+    }
+    $social_networks: "facebook",
+    "twitter",
+    "linkedin";
     @for $i from 1 through 3 {
         $current_network: nth($social_networks, $i);
-
         .social_#{$current_network} {
             @extend .social_icon;
-
             content: url("../../images/social_#{$current_network}.png");
         }
     }
-
     .footer-share {
         float: right;
     }
-
     .footer-copyright-container {
         float: left;
+        padding-bottom: 30px;
+        span>span {
+            @include OpenSansT('Semibold');
+        }
     }
-
     hr {
         clear: both;
+    }
+    .section-title {
+        @include OpenSans('Semibold',
+        20);
+        margin-bottom: 20px;
+    }
+    .section-cell-title {
+        @include OpenSans('Semibold',
+        14);
+        margin-top: 20px;
+    }
+    .section-column {
+        width: 30%;
+        vertical-align: top;
+        margin-left: 30px;
+        &:first-child {
+            margin-left: 0px;
+        }
+    }
+    .section-cell-content{
+        span{
+            display: block;
+        }
     }
 }

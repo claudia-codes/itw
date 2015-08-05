@@ -1,0 +1,84 @@
+@import "yes_Mobile";
+//@import "_yes_Tablet";
+.yes-container {
+    background-color: #EBBB00;
+    border-top: 1px solid black;
+    color: white;
+    padding: 50px 0;
+    .no-spam {
+        text-align: center;
+        @include OpenSans('Light', 20px);
+    }
+    form {
+        text-align: center;
+    }
+    fieldset {
+        border: none;
+        display: inline-block;
+        margin: 0;
+        input {
+            width: 241px;
+            height: 52px;
+            //reset stupid default style
+            border: none;
+            outline: none;
+            margin-left: 20px;
+            position: relative;
+        }
+        input[type="email"] {
+            @include OpenSans('Italic', 18px);
+            text-align: left;
+            padding: 20px;
+            vertical-align: middle;
+            &::-webkit-input-placeholder,
+            &:-moz-placeholder,
+            &:-ms-input-placeholder {
+                color: #2F2B2A;
+            }
+        }
+        input[type="submit"] {
+            text-transform: uppercase;
+            background-color: #D6510D;
+            color: white;
+            @include OpenSans('ExtraBold', 18px);
+        }
+        p {
+            text-align: right;
+            margin: 0;
+        }
+        .yes {
+            vertical-align: middle;
+            display: inline-block;
+            height: 49px;
+            font-size: 49px;
+            top: -14px;
+            @include OpenSans('Bold', 52px);
+            &:before {
+                content: url("../../images/yes_checkbox.png");
+                padding-right: 10px;
+            }
+        }
+        label {
+            position: relative;
+        }
+        label[for="submitBtn"] {
+            span {
+                @include OpenSans('ExtraBold',
+                22px);
+                &::before {
+                    content: '\A';
+                    white-space: pre;
+                }
+            }
+            @include OpenSans('Light',
+            22px);
+            top: 10px;
+        }
+        .mobile-hide {
+            display: inline-block;
+        }
+        .mobile-show {
+            display: none;
+        }
+    }
+}

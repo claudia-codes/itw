@@ -1,0 +1,53 @@
+@import "work_Mobile";
+@import "work_Tablet";
+.boxes-row > div {
+    display: inline-block;
+}
+
+@for $i from 1 through 3 {
+    .group-#{$i}-#{$i+3}{
+        vertical-align: top;
+    }
+    .group-#{$i}{
+        margin-right: 50px;
+    }
+}
+@for $i from 1 through 6 {
+        .group-#{$i}{
+            position: relative;
+        }
+    }
+
+.group-1 {
+    //left: calc(80% - 900px + 50px);
+    content: url("../../images/TherapyRecords.png");
+}
+
+.group-2 {
+    left: calc(80% - 600px + 110px);
+    content: url("../../images/Umbra.png");
+}
+
+.group-3 {
+    //left: $group-3-left;
+    content: url("../../images/EarnestShopper.png");
+}
+
+.group-4 {
+    //left: calc(80% - 900px + 50px);
+    content: url("../../images/Xbox.png");
+}
+
+.group-5 {
+    //left: calc(80% - 600px + 110px);
+    content: url("../../images/Google.png");
+}
+
+.group-6 {
+    //left: calc(80% - 140px);
+    content: url("../../images/Heat.png");
+}
+
+.work-title{
+    @include OpenSans('SemiBold', 32px);
+}

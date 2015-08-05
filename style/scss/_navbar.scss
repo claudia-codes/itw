@@ -1,8 +1,11 @@
-/*****Nav logo*****/
-$square-size: 40px;
+@import "navbar_Mobile";
+@import "navbar_Tablet";
 
-.nav-logo{
-  display: inline-block;
+/*****Nav logo*****/
+
+$square-size: 40px;
+.nav-logo {
+    display: inline-block;
 }
 
 // $logo-square-colors: #EBBB00, #D6510D, #3791C2;
@@ -14,23 +17,64 @@ $square-size: 40px;
 
 /*****Navtabs*****/
 
-.nav>ul>li, .nav>ul{
-  display: inline-block;
-  text-transform: uppercase;
+.nav {
+    text-align: center;
+    @include OpenSans('Light', 12);
+    color: #222222;
+    position: fixed;
+    width: 80%;
+    left: 50%;
+    margin: 0 0 0 -40%;
+    ul,
+    li {
+        display: inline-block;
+        text-transform: uppercase;
+        a {
+            text-decoration: none;
+            color: #222222;
+        }
+    }
+    li {
+        padding-right: 26px;
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+    .nav-menu {
+        padding-left: 0;
+    }
 }
 
-.nav{
-  text-align: center;
-}
- 
+.contact-box {
+        text-align: right;
+        @include OpenSans('Light', 16);
+        right: 10px;
+        top: 30px;
+    }
+    .nav-logo {
+      top: 10px;
+    }
+    .contact-box,
+    .nav-logo {
+        position: absolute;
+    }
+    .nav-logo {
+        left: 10px;
+    }
+    .nav-menu {
+        margin-top: 60px;
+        // font-size: calc_unit($unit, 3.3);
+    }
 .tab {
-  @extend .relative;
+    @extend .relative;
 }
-.tab:hover .subitems{
+
+.tab:hover .subitems {
     display: inline-block;
 }
-.tab .subitems{
-    display: none;  
+
+.tab .subitems {
+    display: none;
     position: absolute;
     float: left;
     list-style: none;
@@ -41,8 +85,9 @@ $square-size: 40px;
     min-width: 150px;
     background-color: #F3F0F0;
 }
+
 .relative {
-  position: relative;
+    position: relative;
 }
 
 
