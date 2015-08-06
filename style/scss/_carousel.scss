@@ -4,6 +4,10 @@
 //     background-color: red;
 // }
 
+.item{
+    background-size: cover;
+    height: 540;
+}
 .first {
     background-image: url('../../images/if.png');
 }
@@ -14,4 +18,12 @@
 
 .third {
     background-image: url('../../images/wow.png');
+}
+.wrapper-with-margin {
+    margin: 0px 20% 0 0;
+}
+
+.owl-carousel .owl-item{
+    height:540px;
+    width:100%;
 }

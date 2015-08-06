@@ -16,10 +16,7 @@
     <!-- ADDTHIS BUTTON END -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../js/animate.js"></script>
-    <script src="../js/scrollReveal.min.js"></script>
-    <script>
-    window.sr = new scrollReveal();
-    </script>
+
 </head>
 <title>Home</title>
 
@@ -142,7 +139,7 @@
             </div>
         </div>
     </section>
-    <section class="relative yes-container">
+    <section data-sr="wait 2.5s, ease-in-out 100px" class="relative yes-container">
         <form action="" method="post" class="mobile-view">
             <fieldset>
                 <div class="mobile-show">
@@ -200,6 +197,10 @@
             </div>
         </section>
     </footer>
+        <script src="../js/scrollReveal.min.js"></script>
+    <script>
+    window.sr = new scrollReveal();
+    </script>
 </body>
 
 </html>
