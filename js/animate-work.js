@@ -2,11 +2,24 @@ $(document).ready(function(){
 
 // $('.owl-carousel').owlCarousel({
 //     margin:0,
-//     center:true,
-//     autoWidth:true,
-//     merge: true,
-//     items:3
+//     items:3,
+//     loop:true,
+//     navigation: true
 // })
+
+$(document).ready(function () {
+    var carousel = $("#owl-demo");
+  carousel.owlCarousel({
+    navigation:true,
+    navigationText: [
+      "<i class='icon-chevron-left icon-white'><</i>",
+      "<i class='icon-chevron-right icon-white'>></i>"
+      ],
+  });
+
+  
+});
+
 
 	
 	$('.group-1').fadeIn(200).animate({width: "280px",left:"100px"},{duration:1000});

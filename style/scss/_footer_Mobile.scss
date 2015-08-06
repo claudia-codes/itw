@@ -1,4 +1,4 @@
-$mobile-size: '(max-device-width: 414px) and (max-device-height: 736px)';
+$mobile-size: '(min-device-width: 320px) and (max-device-height: 736px)';
 $mobile-size: unquote($mobile-size);
 @media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
     //@include the-difference-images("2x");
@@ -11,9 +11,7 @@ $mobile-size: unquote($mobile-size);
 
 @mixin common($unit) {
     .footer-container {
-        font-size: 4vw;
-        $temp: calc_unit($unit, 100);
-        width: calc(#{$temp} - 30px) !important;
+        font-size: calc_unit($unit,4);
         margin: 0 15px;
         .footer-share {
             clear: both;
@@ -23,7 +21,6 @@ $mobile-size: unquote($mobile-size);
         }
         .footer-logo {
             background-size: cover;
-            //min-height: 5vw;
         }
         .social_icon {
             background-repeat: no-repeat;
@@ -36,8 +33,6 @@ $mobile-size: unquote($mobile-size);
             min-height: 21px;
         }
         .section-column {
-            $temp: calc_unit($unit, 100);
-            width: calc(#{$temp} - 30px) !important;
             margin: 0;
         }
         .section-title {
@@ -48,8 +43,18 @@ $mobile-size: unquote($mobile-size);
 
 @media only screen and (orientation: landscape) and #{$mobile-size} {
     @include common('vh');
+
+    .footer-container, .section-column {
+        $temp: calc_unit('vw', 100);
+        width: calc(#{$temp} - 30px) !important;
+    }
 }
 
 @media only screen and (orientation: portrait) and #{$mobile-size} {
     @include common('vw');
+
+    .footer-container, .section-column {
+        $temp: calc_unit('vw', 100);
+        width: calc(#{$temp} - 30px) !important;
+    }
 }

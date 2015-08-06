@@ -1,4 +1,4 @@
-$mobile-size: '(min-device-width: 320px)  and (max-device-height: 736px)';
+$mobile-size: '(min-device-width: 320px) and (max-device-height: 736px)';
 $mobile-size: unquote($mobile-size);
 @media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
     //@include the-difference-images("2x");
@@ -12,10 +12,19 @@ $mobile-size: unquote($mobile-size);
 }
 
 @mixin common($unit) {
-    .work-section .work-title {
-        text-transform: uppercase;
-        $temp: calc_unit($unit, 6.5);
-        @include OpenSans('Extrabold',$temp);
+    .section-description {
+        margin: 0 auto;
+    }
+    .section-descr-content {
+        @include OpenSans('Light', 18);
+    }
+    .section-descr-title {
+        font-size: calc_unit($unit, 6.5) !important;
+    }
+    .section-descr-cell,
+    .section-description {
+        $temp: calc_unit('vw', 100);
+        width: calc(#{$temp} - 30px) !important;
     }
 }
 
@@ -25,10 +34,4 @@ $mobile-size: unquote($mobile-size);
 
 @media only screen and (orientation: portrait) and #{$mobile-size} {
     @include common('vw');
-    
-    @for $i from 1 through 6 {
-        .group-#{$i} {
-            width: calc(100vw - 30px);
-        }
-    }
 }

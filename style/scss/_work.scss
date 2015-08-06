@@ -4,19 +4,24 @@
     display: inline-block;
 }
 
+.work-title {
+    padding: 60px 0 30px 0;
+}
+
 @for $i from 1 through 3 {
-    .group-#{$i}-#{$i+3}{
+    .group-#{$i}-#{$i+3} {
         vertical-align: top;
     }
-    .group-#{$i}{
+    .group-#{$i} {
         margin-right: 50px;
     }
 }
+
 @for $i from 1 through 6 {
-        .group-#{$i}{
-            position: relative;
-        }
+    .group-#{$i} {
+        position: relative;
     }
+}
 
 .group-1 {
     //left: calc(80% - 900px + 50px);
@@ -48,6 +53,7 @@
     content: url("../../images/Heat.png");
 }
 
-.work-title{
-    @include OpenSans('SemiBold', 32px);
+.work-title {
+    @include OpenSans('SemiBold',
+    32px);
 }

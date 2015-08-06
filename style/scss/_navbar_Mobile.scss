@@ -1,4 +1,4 @@
-$mobile-size: '(max-device-width: 414px) and (max-device-height: 736px)';
+$mobile-size: '(min-device-width: 320px) and (max-device-height: 736px)';
 $mobile-size: unquote($mobile-size);
 @media (-webkit-min-device-pixel-ratio: 2) and #{$mobile-size} {
     //@include the-difference-images("2x");
@@ -42,6 +42,9 @@ $mobile-size: unquote($mobile-size);
 
 @media only screen and (orientation: landscape) and #{$mobile-size} {
     @include common('vh');
+    .nav-menu {
+        margin-top: 100px;
+    }
 }
 
 @media only screen and (orientation: portrait) and #{$mobile-size} {

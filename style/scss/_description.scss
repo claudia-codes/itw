@@ -1,0 +1,38 @@
+@import "description_Mobile";
+
+.section-description-container {
+    background-color: white;
+    margin: 50px 0;
+}
+
+.section-description {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.section-descr-title {
+    @include OpenSans('Semibold', 32);
+    text-align: center;
+    padding: 70px 0 20px 0;
+}
+
+.section-descr-content {
+    @include OpenSans('Light', 18);
+}
+
+.welcome {
+    text-align: center;
+    padding-bottom: 90px;
+    padding-top: 20px;
+    span {
+        @include OpenSans('Semibold', 18);
+    }
+}
+
+.section-descr-cell.inline {
+    width: 49%;
+    vertical-align: top;
+    div {
+        margin-top: 40px;
+    }
+}
